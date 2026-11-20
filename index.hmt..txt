@@ -1,0 +1,72 @@
+DOCTYPE html
+html
+head<link rel="manifest" href="manifest.json">
+title>Electro Dignostic</title
+<style>
+body[<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
+}
+</script>
+font-family:Arial
+background#fofofo
+text-align:centre
+]
+header[
+background#003366
+colour:white
+padding:25px
+]
+h2[
+colour[
+background:orange
+padding:12px
+boarder:none
+curser:pointer
+]
+select[
+padding:10px
+]
+</style<
+</head<
+<body>
+</header>
+<h1>ELECTRO DIAGNOSTIC</h1>
+<p>electrol fault identification system</p>
+<header>
+<h2>welcome to electro diagonostic</h2>
+<p>identify possible electrical problems and find safe solution</p>
+<h3>select your electrical problem<h3>
+<select id="problem">
+<option value=">select problem>/option>
+<option value="breaker=">circuit breakers keeps tripping</option>
+<option value=:light:>lights are flickering</option>
+<potion value=:sockets:> sockets is not working</option>
+<option value=:shock:> electric shock fromappliance</option>
+</select>
+<br><br>
+<button onclick=:diagnose[]"=identify problem</button>
+<h3id="result"<>/h3>
+<script>
+function diagnose[][
+let problem=document getelementbyld["problem}value;
+let result=document getelementbyld["result]
+if[problem=="breaker"] [
+result.innerHTML="possible causes:overloading,short circuit or earth leakage.swich off the affected circuit and contacta qualified electrian";
+]
+else if[problem==light"]  [
+result.innerHTML=possible causes;loose connection,voltage fluacuation or faultyswich.have the circuit checked";
+]
+else if [problem=="sockets"] [
+result.innerHTML="possible causes:loose connection ,damage socket or circuit interruption.do not open the socket while live".
+]
+else if[problem=="shock"] [
+result.[innerHMTL="danger:stop using the appliance disconect power onlyif safe and contacta qualified
+]
+else[
+result.innerHTML='please select an electrical problem
+]
+]
+</script>
+</body>
+</html?
