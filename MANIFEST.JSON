@@ -1,0 +1,23 @@
+{
+  "name": "ElectroTech & ICT Diagnosis System",
+  "short_name": "ElectroTech",
+  "description": "Advanced Electrical, Electronics and ICT Troubleshooting System",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071b35",
+  "theme_color": "#071b35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

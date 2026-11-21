@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071b35">
+    <title>ElectroTech & ICT Diagnosis System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon">?</div>
+            <div>
+                <h2>ElectroTech</h2>
+                <small>DIAGNOSIS SYSTEM</small>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#dashboard" class="nav-link active">¦ Dashboard</a>
+            <a href="#diagnosis" class="nav-link">? Diagnosis</a>
+            <a href="#services" class="nav-link">? Services</a>
+            <a href="#history" class="nav-link">? History</a>
+            <a href="#contact" class="nav-link">? Contact Technician</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span class="status-dot"></span>
+            Diagnosis Engine Online
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <button class="menu-btn" onclick="toggleMenu()">?</button>
+            <div>
+                <h3>Technical Dashboard</h3>
+                <small>Electrical • Electronics • ICT</small>
+            </div>
+            <div class="top-right">SYSTEM v1.0</div>
+        </header>
+
+        <section id="dashboard" class="welcome">
+            <div>
+                <span class="eyebrow">SMART TROUBLESHOOTING PLATFORM</span>
+                <h1>Identify Problems.<br><span>Find Solutions.</span></h1>
+                <p>Advanced technical fault identification and troubleshooting assistance.</p>
+                <a href="#diagnosis" class="primary-btn">Start Diagnosis ?</a>
+            </div>
+            <div class="hero-symbol">?</div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>?</span>
+                <h3>Electrical</h3>
+                <p>Electrical fault analysis</p>
+            </div>
+            <div class="stat-card">
+                <span>??</span>
+                <h3>Electronics</h3>
+                <p>Equipment troubleshooting</p>
+            </div>
+            <div class="stat-card">
+                <span>??</span>
+                <h3>ICT</h3>
+                <p>Computer and network support</p>
+            </div>
+            <div class="stat-card">
+                <span>??</span>
+                <h3 id="historyCount">0</h3>
+                <p>Saved diagnoses</p>
+            </div>
+        </section>
+
+        <section id="diagnosis" class="section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">FAULT IDENTIFICATION</span>
+                    <h2>Diagnosis Centre</h2>
+                    <p>Select your preferred troubleshooting method.</p>
+                </div>
+            </div>
+
+            <div class="diagnosis-tabs">
+                <button class="tab active" onclick="showMode('automatic',this)">
+                    ?? Automatic Diagnosis
+                </button>
+                <button class="tab" onclick="showMode('manual',this)">
+                    ?? Manual Diagnosis
+                </button>
+            </div>
+
+            <div id="automatic" class="diagnosis-panel">
+                <h3>Describe Your Technical Problem</h3>
+                <p>Explain the symptoms, equipment and what happens when you use it.</p>
+
+                <select id="autoCategory">
+                    <option value="">Select technical category</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="ict">ICT</option>
+                </select>
+
+                <textarea id="problemInput"
+                    placeholder="Example: My circuit breaker trips whenever I switch on the hot plate..."></textarea>
+
+                <button class="primary-btn" onclick="automaticDiagnosis()">
+                    Analyse Problem ?
+                </button>
+            </div>
+
+            <div id="manual" class="diagnosis-panel hidden">
+                <h3>Manual Fault Identification</h3>
+                <p>Select the category and equipment problem.</p>
+
+                <select id="manualCategory" onchange="loadProblems()">
+                    <option value="">Select category</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="ict">ICT</option>
+                </select>
+
+                <select id="manualProblem">
+                    <option value="">Select a problem</option>
+                </select>
+
+                <button class="primary-btn" onclick="manualDiagnosis()">
+                    Identify Possible Fault ?
+                </button>
+            </div>
+
+            <div id="result" class="result-box hidden" aria-live="polite">
+                <div class="result-heading">
+                    <h3>Diagnosis Report</h3>
+                    <span class="result-label">PRELIMINARY</span>
+                </div>
+                <div id="resultContent"></div>
+                <button class="secondary-btn" onclick="saveDiagnosis()">
+                    Save Report
+                </button>
+                <button class="secondary-btn" onclick="printReport()">
+                    Print Report
+                </button>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <span class="eyebrow">TECHNICAL SUPPORT</span>
+            <h2>Our Diagnostic Categories</h2>
+
+            <div class="service-grid">
+                <article class="service-card">
+                    <div class="service-icon">?</div>
+                    <h3>Electrical Engineering</h3>
+                    <p>Wiring, circuit breakers, sockets, lighting, motors and earthing faults.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">??</div>
+                    <h3>Electronics</h3>
+                    <p>Televisions, amplifiers, chargers, power supplies and electronic circuits.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon">??</div>
+                    <h3>Information Technology</h3>
+                    <p>Computer hardware, Windows, software, printers and networking problems.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="history" class="section">
+            <span class="eyebrow">PREVIOUS ANALYSIS</span>
+            <h2>Diagnosis History</h2>
+            <div id="historyList" class="history-list">
+                <p>No diagnosis reports saved yet.</p>
+            </div>
+            <button class="secondary-btn" onclick="clearHistory()">Clear History</button>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Need Professional Assistance?</h2>
+            <p>Contact a technician for professional inspection and repair.</p>
+            <h3>0994612644</h3>
+            <a href="tel:0994612644" class="primary-btn">? Call Technician</a>
+            <a href="https://wa.me/265994612644" class="whatsapp-btn" target="_blank" rel="noopener">WhatsApp</a>
+        </section>
+
+        <footer>
+            <p>© 2026 ElectroTech & ICT Diagnosis System</p>
+            <small>Identify Problems. Find Solutions. Connect to Experts.</small>
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
